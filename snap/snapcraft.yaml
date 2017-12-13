@@ -1,0 +1,21 @@
+name: glib-test
+version: '0.1'
+summary: glib-test
+description: glib-test
+
+grade: devel
+confinement: strict
+
+parts:
+  glib-test:
+    after: [snapcraft-preload]
+    plugin: cmake
+    source: .
+    build-packages:
+      - libglib2.0-dev
+    stage-packages:
+      - libglib2.0-0
+
+apps:
+  glib-test:
+    command: snapcraft-preload $SNAP/bin/glib-test
